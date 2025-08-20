@@ -1,49 +1,130 @@
-# 4Geeks data science project boilerplate
+# California Housing Market Clustering with K-means
 
-Minimal Python 3.11 repository for 4Geeks data science assignments. Several useful Python packages and VSCode extensions are installed on Codespace boot-up. Directories for models and data are created within the Codespace but excluded from tracking.
+[![Codespaces Prebuilds](https://github.com/4GeeksAcademy/gperdrizet-k-means/actions/workflows/codespaces/create_codespaces_prebuilds/badge.svg)](https://github.com/4GeeksAcademy/gperdrizet-k-means/actions/workflows/codespaces/create_codespaces_prebuilds)
 
-## 1. Set-up
+A comprehensive machine learning project demonstrating unsupervised clustering with K-means and supervised classification on California housing market data. This project combines geographic and economic data analysis to identify distinct housing market segments and build predictive models.
 
-Fork this repository by clicking the *Fork* button at the upper right. Make sure to set 4Geeks as the owner of the new fork - this way 4Geeks pays for your codespace usage. Then start a Codespace on your fork by clicking the green *Code* button and then '**+**' icon under Codespaces in the drop-down menu.
 
-## 2. Environment
+## Project Overview
 
-### 2.1. Repository structure
+This project analyzes California housing data to discover natural market segments using K-means clustering, then builds supervised models to predict cluster membership. The analysis focuses on **geographic location** (latitude, longitude) and **economic factors** (median income) to provide hands-on experience with:
 
-```text
-.
-├──.devcontainer
-│   └── devcontainer.json
+- Unsupervised machine learning (K-means clustering)
+- Data preprocessing and feature scaling
+- Geographic and economic data visualization
+- Supervised classification model development
+- Cross-validation and model evaluation
+- 2D and 3D data visualization techniques
+
+
+## Getting Started
+
+### Option 1: GitHub Codespaces (Recommended)
+
+1. **Fork the Repository**
+   - Click the "Fork" button on the top right of the GitHub repository page
+   - 4Geeks students: set 4GeeksAcademy as the owner - 4Geeks pays for your codespace usage. All others, set yourself as the owner
+   - Give the fork a descriptive name. 4Geeks students: I recommend including your GitHub username to help in finding the fork if you loose the link
+   - Click "Create fork"
+   - 4Geeks students: bookmark or otherwise save the link to your fork
+
+2. **Create a GitHub Codespace**
+   - On your forked repository, click the "Code" button
+   - Select "Create codespace on main"
+   - If the "Create codespace on main" option is grayed out - go to your codespaces list from the three-bar menu at the upper left and delete an old codespace
+   - Wait for the environment to load (dependencies are pre-installed)
+
+3. **Start Working**
+   - Open `notebooks/mvp.ipynb` in the Jupyter interface for the assignment
+   - Follow the step-by-step instructions in the notebook
+   - Reference `notebooks/solution.ipynb` for the complete implementation
+
+### Option 2: Local Development
+
+1. **Prerequisites**
+   - Git
+   - Python >= 3.10
+
+2. **Fork the repository**
+   - Click the "Fork" button on the top right of the GitHub repository page
+   - Optional: give the fork a new name and/or description
+   - Click "Create fork"
+
+3. **Clone the repository**
+   - From your fork of the repository, click the green "Code" button at the upper right
+   - From the "Local" tab, select HTTPS and copy the link
+   - Run the following commands on your machine, replacing `<LINK>` and `<REPO_NAME>`
+
+   ```bash
+   git clone <LINK>
+   cd <REPO_NAME>
+   ```
+
+4. **Set Up Environment**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+5. **Launch Jupyter & start the notebook**
+   ```bash
+   jupyter notebook notebooks/mvp.ipynb
+   ```
+
+
+## Project Structure
+
+```
+├── .devcontainer/      # Development container configuration
+├── data/               # Data storage directory
+├── models/             # Model storage directory
 │
-├── src
-│   └── project.ipynb
+├── notebooks/          # Jupyter notebook directory
+│   ├── functions.py    # Helper functions for analysis
+│   ├── mvp.ipynb       # Assignment notebook (start here)
+│   └── solution.ipynb  # Complete solution notebook
 │
-├── .gitignore
-├── LICENSE
-├── README.md
-└── requirements.txt
+├── .gitignore          # Files/directories not tracked by git
+├── LICENSE             # Project license
+├── requirements.txt    # Python dependencies
+└── README.md           # Project documentation
 ```
 
-### 2.2. Python
-**Base image**: [Python 3.11](https://github.com/devcontainers/images/tree/main/src/python)
+## Dataset
 
-Packages installed via `requirements.txt`:
+The project uses California housing data from the 4GeeksAcademy K-means tutorial repository. The dataset contains housing market information with the following key features used for clustering:
 
-1. [numpy 2.2.3](https://numpy.org/doc/stable/index.html)
-2. [pandas 2.2.3](https://pandas.pydata.org/docs/)
-3. [scikit-learn 1.6.1](https://scikit-learn.org/stable/index.html)
-4. [matplotlib 3.10.1](https://matplotlib.org/stable/index.html)
-5. [seaborn 0.13.2](https://seaborn.pydata.org/)
-6. [ipykernel 6.29.5](https://pypi.org/project/ipykernel/)
+- **MedInc**: Median income in the area (economic factor)
+- **Latitude**: Geographic coordinate (north-south position)  
+- **Longitude**: Geographic coordinate (east-west position)
 
-If you need to install additional Python packages, you can do so via the terminal with: `pip install packagename`.
+The dataset provides 20,640 housing records across California, offering rich geographic and economic diversity for clustering analysis.
 
-### 2.3. VSCode extensions
+**Data Source**: https://raw.githubusercontent.com/4GeeksAcademy/k-means-project-tutorial/main/housing.csv
 
-Sepcified via `devcontainier.json`.
 
-1. [ms-python.python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-2. [ms-toolsai.jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
-3. [streetsidesoftware.code-spell-checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+## Learning Objectives
 
-VSCode extensions can be added via the *Extensions* tab located on the activities panel at the left once inside the Codespace.
+1. **Data Loading & Preprocessing**: Load remote data, save local copies, and prepare features
+2. **Exploratory Data Analysis**: Analyze feature distributions and correlations
+3. **Data Preparation**: Train-test splitting and feature scaling with MinMaxScaler
+4. **Unsupervised Learning**: Apply K-means clustering to identify market segments
+5. **Data Visualization**: Create 2D geographic plots and 3D scatter visualizations
+6. **Supervised Learning**: Build classification models to predict cluster membership
+7. **Model Evaluation**: Implement cross-validation and assess model performance
+8. **Market Analysis**: Interpret clustering results in real-world context
+
+
+## Technologies Used
+
+- **Python 3.11**: Core programming language
+- **Pandas 2.3.1**: Data manipulation and analysis
+- **Scikit-learn 1.7.1**: Machine learning algorithms and preprocessing
+- **Matplotlib 3.10.3**: Static data visualization
+- **Seaborn 0.13.2**: Statistical data visualization
+- **Plotly 6.0.1**: Interactive 3D visualizations
+- **NumPy 2.3.2**: Numerical computing
+- **Jupyter 1.1.1**: Interactive development environment
+- **GitHub Codespaces**: Cloud-based development environment
